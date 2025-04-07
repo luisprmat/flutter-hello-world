@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world_app/presentation/widgets/custom_button.dart';
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({super.key});
@@ -38,31 +39,29 @@ class _CounterScreenState extends State<CounterScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            shape: StadiumBorder(),
+          CustomButton(
+            icon: Icons.refresh_outlined,
             onPressed: () {
               clickCounter = 0;
               setState(() {});
             },
-            child: Icon(Icons.refresh_outlined),
           ),
           SizedBox(height: 10),
-          FloatingActionButton(
-            shape: StadiumBorder(),
+          CustomButton(
+            icon: Icons.plus_one,
             onPressed: () {
               clickCounter++;
               setState(() {});
             },
-            child: Icon(Icons.plus_one),
           ),
           SizedBox(height: 10),
-          FloatingActionButton(
-            shape: StadiumBorder(),
+          CustomButton(
+            icon: Icons.exposure_minus_1_outlined,
             onPressed: () {
+              if (clickCounter == 0) return;
               clickCounter--;
               setState(() {});
             },
-            child: Icon(Icons.exposure_minus_1_outlined),
           ),
         ],
       ),

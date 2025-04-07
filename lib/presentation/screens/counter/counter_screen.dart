@@ -15,6 +15,16 @@ class _CounterScreenState extends State<CounterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Counter screen'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh_rounded),
+            onPressed: () {
+              setState(() {
+                clickCounter = 0;
+              });
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -25,12 +35,36 @@ class _CounterScreenState extends State<CounterScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          clickCounter++;
-          setState(() {});
-        },
-        child: Icon(Icons.plus_one),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            shape: StadiumBorder(),
+            onPressed: () {
+              clickCounter = 0;
+              setState(() {});
+            },
+            child: Icon(Icons.refresh_outlined),
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            shape: StadiumBorder(),
+            onPressed: () {
+              clickCounter++;
+              setState(() {});
+            },
+            child: Icon(Icons.plus_one),
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            shape: StadiumBorder(),
+            onPressed: () {
+              clickCounter--;
+              setState(() {});
+            },
+            child: Icon(Icons.exposure_minus_1_outlined),
+          ),
+        ],
       ),
     );
   }
